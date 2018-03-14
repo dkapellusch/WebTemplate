@@ -1,0 +1,15 @@
+
+<mat-form-field style="margin-left:2%;">
+        <mat-select placeholder="Operators" [(value)] ="selected" (valueChange)="changed()">
+          <mat-option *ngFor="let user of users" [value]="user">{{user}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+<div style="margin-left:5%; display: inline-block; width:90vw;">
+    <canvas #chart baseChart  [datasets]="chartData" [labels]="lineChartLabels" 
+    [options]="lineChartOptions"
+        [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
+        
+    </canvas>
+    
+</div>

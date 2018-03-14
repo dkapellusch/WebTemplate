@@ -1,0 +1,55 @@
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+  }
+  
+  .example-header {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    padding-left: 24px;
+    font-size: 20px;
+  }
+  
+  @media (max-height: 800px) {
+    .mat-dialog-container {
+      margin-top: 10vh;
+      margin-bottom: 10vh;
+    }
+  }
+  
+  .mat-dialog-container {
+    margin-top: 5vh;
+    /* background-color: #F7F8F1; */
+  }
+  .mat-table {
+    overflow: auto;
+  }
+  
+  .test {
+    background-color: purple !important;
+    color: rgb(233, 196, 34);
+  }
+  
+  /*snack-bar-container.success-snackbar {*/
+  
+  /*background-color: red !important;*/
+  
+  /*color: red !important;*/
+  
+  /*}*/
+  
+  .addButton {
+    float: left;
+    position: fixed;
+  }
+  
+  .fill-remaining-space {
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    -o-flex: 1 1 auto;
+    flex: 1 1 auto;
+  }
+  

@@ -1,0 +1,5 @@
+{
+    "ConnectionStrings":{
+        "Local":"mongodb://localhost:27017/webTest"
+    }
+}

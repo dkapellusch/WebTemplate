@@ -1,0 +1,62 @@
+/*
+for side nav
+*/
+@media (max-width: 1007px) {
+    mat-sidenav-container {
+      margin: 0;
+      padding-left: -25px;
+      height: 105vh;
+    }
+    mat-sidenav {
+      position: fixed;
+      z-index: 9;
+      top: 0;
+      left: 0;
+      width: 38vw;
+      margin: 0;
+      background-color: #673ab7;
+    }
+  }
+  
+  .toolbarItem {
+    padding-right: 2%;
+  }
+  
+  mat-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+  
+  .block {
+    display: block;
+  }
+  
+  .fill-remaining-space {
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    -o-flex: 1 1 auto;
+    flex: 1 1 auto;
+  }
+  
+  .toolBarContainer {
+    margin-bottom: .85vh;
+  }
+  
+  .toolBarLinkText {
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+      1px 1px 0 #000;
+    font-family: Arial Black, Arial Bold, Gadget, sans-serif;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  a:active {
+    color: #ffc;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+      1px 1px 0 #000;
+  }

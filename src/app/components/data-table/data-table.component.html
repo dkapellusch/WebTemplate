@@ -1,0 +1,30 @@
+<h2 style="text-align: center; color:#4A148C" > Shift Average {{today}} </h2>
+<mat-expansion-panel color="primary">
+    <mat-expansion-panel-header color="primary">
+      <mat-panel-title style="text-align: right">
+        <mat-icon>menu</mat-icon>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-panel-description color="primary" style="margin-left: 20%;">
+      <mat-icon style="color: #168e16; margin-right: .6%; margin-top: 1%;">find_in_page</mat-icon>
+      <mat-form-field color="primary" style="display: inline-block; width: 70%;" floatPlaceholder="never">
+        <input style="color: #168e16; display: inline;" matInput #filter placeholder="Search Operators">
+      </mat-form-field>
+    </mat-panel-description>
+  </mat-expansion-panel>
+
+  <div class="example-container mat-elevation-z4">
+    <mat-table #table [dataSource]="dataSource" matSort>
+      <ng-container *ngFor="let item of displayedColumns;" matColumnDef="{{item}}">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> {{item.charAt(0).toUpperCase() + item.slice(1)}} </mat-header-cell>
+        <mat-cell [style.color] = 'getColor(row.score)' *matCellDef="let row; let i=index"> {{buildValue(row,item)}} </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="rowClickedHandler(row)"></mat-row>
+    </mat-table>
+    <span>
+      <mat-paginator color="primary" #paginator [length]="exampleDatabase.data.length" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 15, 25, 50]">
+      </mat-paginator>
+    </span>
+  </div>
+  

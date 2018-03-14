@@ -1,0 +1,12 @@
+  <h2 style="text-align: center;" >{{title}} Activity By Time(s)</h2>
+  <div>
+  <canvas class="chart" baseChart 
+          style="width:20vw; height: 20vh; display:block" 
+          [data]="polarAreaChartData"
+          [labels]="polarAreaChartLabels"
+          [legend]="polarAreaLegend"
+          [chartType]="polarAreaChartType"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)">
+  </canvas>
+</div>
