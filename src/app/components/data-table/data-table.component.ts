@@ -19,7 +19,6 @@ export class DataTableComponent implements OnInit {
 
     constructor(private dialog : MatDialog, public snackBar : MatSnackBar, public exampleDatabase : ExampleDatabase)
     {
-        console.log(this.displayedColumns);
     }
 
     public ngOnInit()

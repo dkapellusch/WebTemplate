@@ -1,6 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {RouterModule} from "@angular/router";
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {CommonModule} from "@angular/common";
 import {ChartsModule} from "ng2-charts";
 import {FormsModule} from "@angular/forms";
@@ -18,10 +19,17 @@ import { LineChartComponent } from './components/linechart/linechart.component';
 import { DonutChartComponent } from './components/donut-chart/donut-chart.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OperatorChartComponent } from './components/operator-chart/operator-chart.component';
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './reducers/counter.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { AlertEffect } from './effects/alert.effect';
 
 @NgModule({
   declarations: [
-    AppComponent, HomeComponent, DataTableComponent, NavMenuComponent, LineChartComponent, DonutChartComponent, DashboardComponent, OperatorChartComponent
+    AppComponent, HomeComponent, 
+    DataTableComponent, NavMenuComponent, 
+    LineChartComponent, DonutChartComponent, 
+    DashboardComponent, OperatorChartComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +41,11 @@ import { OperatorChartComponent } from './components/operator-chart/operator-cha
     HttpClientModule,
     FlexLayoutModule,
     MaterialModule,
+    StoreModule.forRoot({ count: counterReducer }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 10
+    }),
+    EffectsModule.forRoot([AlertEffect]),
     RouterModule.forRoot([
       {
         path: "",

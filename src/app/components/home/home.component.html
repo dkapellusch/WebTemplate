@@ -3,4 +3,12 @@
 
 </h1>
 <br>
+
+<button mat-button (click)="sendMessage()" color="primary" > Send Message</button>
 <img style= "margin:auto; display:block; "src="https://mining.komatsu/images/default-source/product-images/surface/electric-rope-shovels/gpl5839.jpg?sfvrsn=54"/>
+
+<button mat-button  color="primary" (click)="decrement()">Decrement</button>
+<button  mat-button  color="primary" (click)="increment()">Increment</button>
+<button mat-button  color="primary" (click)="reset()">Reset Counter</button>
+<hr/>
+<div>Current Count: {{ count$ | async }}</div>

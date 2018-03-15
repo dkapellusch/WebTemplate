@@ -43,6 +43,7 @@ export class NavMenuComponent
         {
             this.SideNav.close();
         });
+
         media.asObservable().subscribe(mChange =>
         {
             if (this.SideNav != null || this.SideNav != undefined && mChange.mqAlias != "xs" && mChange.mqAlias !== "sm"

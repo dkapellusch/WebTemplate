@@ -11,10 +11,8 @@
         </mat-toolbar>
     </div>
     
-    <router-outlet fxShow.lt-md="false"></router-outlet>
-    
-    <mat-sidenav-container fxShow.lt-md="true">
-        <mat-sidenav #sidenav mode="over">
+    <mat-sidenav-container   >
+        <mat-sidenav #sidenav mode="over" backgroundcolor="primary">
             <button mat-icon-button (click)="sidenav.close()">
                 <mat-icon aria-label="Menu Icon">view_headline</mat-icon>
             </button>
@@ -39,6 +37,5 @@
             </mat-toolbar>
         </div>
         <router-outlet></router-outlet>
-        <br/>
     
     </mat-sidenav-container>

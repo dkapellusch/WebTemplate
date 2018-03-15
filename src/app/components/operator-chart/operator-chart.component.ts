@@ -109,7 +109,6 @@ export class OperatorChartComponent implements OnInit {
       data: this.getDistribution(this.exampleDatabase.data.find(d => d.name == operator).score),
       label: operator
     }];
-    console.log(this.lineChartData);
     
   }
 

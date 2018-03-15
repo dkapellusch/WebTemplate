@@ -14,7 +14,7 @@
     "start:devClient": "ng serve --hmr -e=hmr --proxy-config proxy.config.json",
     "start:devServer": "tsc-watch -p ./tsconfig.server.json --onSuccess \"yarn start:server \"",
     "start:devAll": "concurrently --kill-others \" yarn start:devServer \" \" yarn start:devClient \" ",
-    "start:server": "node ./compiled-server/main.server.js",
+    "start:server": "node --inspect ./compiled-server/main.server.js",
     "start:prod": "yarn build:all && yarn buildScripts && yarn start:server"
   },
   "private": true,
