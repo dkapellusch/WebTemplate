@@ -16,7 +16,7 @@
   <div class="example-container mat-elevation-z4">
     <mat-table #table [dataSource]="dataSource" matSort>
       <ng-container *ngFor="let item of displayedColumns;" matColumnDef="{{item}}">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> {{item.charAt(0).toUpperCase() + item.slice(1)}} </mat-header-cell>
+        <mat-header-cell style="color:#4A148C; font-weight: bold;" *matHeaderCellDef mat-sort-header> {{item.charAt(0).toUpperCase() + item.slice(1)}} </mat-header-cell>
         <mat-cell [style.color] = 'getColor(row.score)' *matCellDef="let row; let i=index"> {{buildValue(row,item)}} </mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

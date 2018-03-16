@@ -241,7 +241,7 @@
   dependencies:
     typescript "~2.6.2"
 
-"@types/body-parser@*":
+"@types/body-parser@*", "@types/body-parser@^1.16.8":
   version "1.16.8"
   resolved "https://registry.yarnpkg.com/@types/body-parser/-/body-parser-1.16.8.tgz#687ec34140624a3bec2b1a8ea9268478ae8f3be3"
   dependencies:
@@ -907,7 +907,7 @@ bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
   version "4.11.8"
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.8.tgz#2cde09eb5ee341f484746bb0309b3253b1b1442f"
 
-body-parser@1.18.2, body-parser@^1.16.1:
+body-parser@1.18.2, body-parser@^1.16.1, body-parser@^1.18.2:
   version "1.18.2"
   resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.18.2.tgz#87678a19d84b47d859b83199bd59bce222b10454"
   dependencies:
@@ -7533,9 +7533,9 @@ ts-node@^5.0.1:
     source-map-support "^0.5.3"
     yn "^2.0.0"
 
-tsc-watch@^1.0.16:
-  version "1.0.16"
-  resolved "https://registry.yarnpkg.com/tsc-watch/-/tsc-watch-1.0.16.tgz#543b736921b52be69831885f8f5e25aa21308cb7"
+tsc-watch@^1.0.17:
+  version "1.0.17"
+  resolved "https://registry.yarnpkg.com/tsc-watch/-/tsc-watch-1.0.17.tgz#c33e564aba93617823b17996f2dd999cefb7a0b9"
   dependencies:
     chalk "^2.3.0"
     cross-spawn "^5.1.0"

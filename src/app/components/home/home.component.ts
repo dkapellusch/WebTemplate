@@ -52,7 +52,13 @@ export class HomeComponent {
 	@test
 	sendMessage() {
 		this.http.get('/api/test').subscribe((r) => {
-			alert(JSON.stringify(r, null, 4));
+			console.log(JSON.stringify(r, null, 4));
+		});
+	}
+
+	makePerson() {
+		this.http.post("/api/addPerson",{name: "me!"}).subscribe(r => {
+			console.log(JSON.stringify(r, null, 4));
 		});
 	}
 }

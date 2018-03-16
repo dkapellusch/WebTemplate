@@ -7,7 +7,7 @@
         {
             "type": "node",
             "request": "attach",
-            "name": "Server Hot",
+            "name": "Server",
             "port": 9229,
             "smartStep": true,
             "showAsyncStacks": true,
@@ -15,12 +15,6 @@
             // "processId": "${command:PickProcess}",
             "restart": true,
             "protocol": "auto"
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Server",
-            "program": "${workspaceFolder}/compiled-server/main.server.js"
         },
         {
             "name": "Client",
