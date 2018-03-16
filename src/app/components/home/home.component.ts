@@ -17,11 +17,11 @@ import { HttpClient } from '@angular/common/http';
 import { INCREMENT, DECREMENT, RESET } from '../../reducers/counter.reducer';
 import { Store } from '@ngrx/store';
 import  {test}  from '../../decorators/test.decorator';
+import { guid } from '../../utils/guid';
 
 interface AppState {
 	count: number;
 }
-
 
 @Component({
 	selector: 'app-home',
@@ -32,7 +32,7 @@ interface AppState {
 export class HomeComponent {
 	count$: Observable<number>;
 	title = 'App';
-	
+	personName = "";
 	constructor(private store: Store<AppState>, private http: HttpClient) {
 		this.count$ = store.select((a) => a.count);
 	}
@@ -51,14 +51,13 @@ export class HomeComponent {
 
 	@test
 	sendMessage() {
-		this.http.get('/api/test').subscribe((r) => {
-			console.log(JSON.stringify(r, null, 4));
-		});
+		alert(guid())
 	}
 
 	makePerson() {
-		this.http.post("/api/addPerson",{name: "me!"}).subscribe(r => {
+		this.http.post("/api/addPerson",{name: this.personName}).subscribe(r => {
 			console.log(JSON.stringify(r, null, 4));
-		});
+			this.makePerson();
+		});		
 	}
 }

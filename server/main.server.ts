@@ -3,7 +3,7 @@ import * as path from "path";
 import * as bodyParser from "body-parser";
 import { readFileSync } from "fs";
 import { MongooseConnector } from "./persistence/mongooseConnector";
-import { Person } from "./model-types/person.model";
+import { Person } from "./persistence/models/person.model";
 
 (async function() {
     const PORT = process.env.PORT || 8080;
