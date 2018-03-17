@@ -3,7 +3,7 @@ export function createWorker(code: string): Worker {
 }
 
 function createBlob(code: string):Blob {
-    return new Blob(['self.onmessage = ', code], { type: 'text/javascript' })
+    return new Blob(['self.onmessage = ()=>{', "self.postMessage((",code,")());}"], { type: 'text/javascript' })
 }
 
 function createUrlObject(blob: Blob): string {

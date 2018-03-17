@@ -18,6 +18,7 @@ import { Store } from '@ngrx/store';
 import { test } from '../../decorators/test.decorator';
 import { guid } from '../../utils/guid';
 import { PersonModel } from '../../../../common/models/person.model';
+import { createWorker } from '../../utils/createWorker';
 
 interface IAppState {
     count: number;
@@ -83,7 +84,13 @@ export class HomeComponent {
     async sendMessage() {
         (await this.getWebSocket()).send("hey");
     }
-
+	
+	testWorker() {
+		let code = () => "wowie!";
+		let worker = createWorker(code.toString());
+		worker.postMessage("test");
+		worker.onmessage = (m) => console.log(m.data)
+	}
     makePerson() {
         this.http.post('/api/addPerson', new PersonModel(this.personName)).subscribe((r) => {
             console.log(JSON.stringify(r, null, 4));
