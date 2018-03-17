@@ -16,9 +16,7 @@ export function InitializeSocketServer(server: Server) {
             setTimeout(() => socket.send("Hi this is a follow up, hope you are good!"), 3000);
         });
 
-        socket.on("error", () => console.log("connection error oh well"));
-        socket.send('Hi there, I am a WebSocket server');
     });
-    
+    socketServer.on("error", () => console.log("connection error oh well"));
     return socketServer;
 }

@@ -34,6 +34,9 @@ import { InitializeSocketServer } from "./webSocketHandler.server";
     // await p.save();
     // let myPerson = await Person.findOne({}).exec();
     // let myJob = await Job.findOne({}).populate({path:"professionals"}).exec();
+    HTTP_SERVER.on("error", e => {
+        console.log(e);
+    })
     APP.use(cors())
     APP.use(bodyParser.json());
     APP.use(bodyParser.urlencoded({ extended: false }));
@@ -59,7 +62,7 @@ import { InitializeSocketServer } from "./webSocketHandler.server";
         res.sendFile(path.resolve(__dirname, "../dist/index.html"));
     });
 
-    APP.listen(PORT, () => {
+    HTTP_SERVER.listen(PORT, () => {
         console.log(`Node server listening on http://localhost:${PORT}`);
     });
 })();

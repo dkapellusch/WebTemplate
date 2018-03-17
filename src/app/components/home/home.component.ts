@@ -20,57 +20,73 @@ import { guid } from '../../utils/guid';
 import { PersonModel } from '../../../../common/models/person.model';
 
 interface IAppState {
-	count: number;
+    count: number;
 }
 
 @Component({
-	selector: 'app-home',
-	templateUrl: './home.component.html',
-	styleUrls: [ './home.component.css' ],
-	encapsulation: ViewEncapsulation.None
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css'],
+    encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent {
-	
-	_socket: any;
-	count$: Observable<number>;
-	title = 'App';
-	personName = '';
-	constructor(private store: Store<IAppState>, private http: HttpClient) {
-		this.count$ = store.select((a) => a.count);
-	}
 
-	increment() {
-		this.store.dispatch({ type: INCREMENT });
-	}
-
-	decrement() {
-		this.store.dispatch({ type: DECREMENT });
-	}
-
-	reset() {
-		this.store.dispatch({ type: RESET });
-	}
-	
-	openWebSocket(): void {
-		this._socket = new WebSocket("ws://18.216.59.169:8081");
-        this._socket.onmessage= (m) => {
-            alert("Wow I got " + JSON.stringify(m.data));
-        }
-	}
-	get socket():WebSocket {
-        if(this._socket === null || this._socket === undefined || !this._socket.OPEN){
-            this.openWebSocket();
-        }
-        return this._socket;
+    _socket: any;
+    count$: Observable < number > ;
+    title = 'App';
+    personName = '';
+    constructor(private store: Store < IAppState > , private http: HttpClient) {
+        this.count$ = store.select((a) => a.count);
     }
-	@test
-	sendMessage() {
-		this.socket.send("hey");
-	}
 
-	makePerson() {
-		this.http.post('/api/addPerson', new PersonModel(this.personName)).subscribe((r) => {
-			console.log(JSON.stringify(r, null, 4));
-		});
-	}
+    increment() {
+        this.store.dispatch({ type: INCREMENT });
+    }
+
+    decrement() {
+        this.store.dispatch({ type: DECREMENT });
+    }
+
+    reset() {
+        this.store.dispatch({ type: RESET });
+    }
+
+    connect() {
+        return new Promise(function(resolve, reject) {
+            var server = new WebSocket('ws://mysite:1234');
+            server.onopen = function() {
+                resolve(server);
+            };
+            server.onerror = function(err) {
+                reject(err);
+            };
+
+        });
+    }
+
+    getWebSocket(): Promise < WebSocket > {
+        return new Promise((res, rej) => {
+            if (this._socket !== undefined && this._socket !== null && this._socket.OPEN) {
+                res(this._socket);
+            }
+            this._socket = new WebSocket("ws://localhost:4200/api");
+            this._socket.onmessage = (m) => {
+                alert("Wow I got " + JSON.stringify(m.data));
+            }
+            this._socket.onopen = () => res(this._socket);
+            this._socket.onerror = (err) => rej(err);
+        });
+
+    }
+
+    @test
+    async sendMessage() {
+        (await this.getWebSocket()).send("hey");
+    }
+
+    makePerson() {
+        this.http.post('/api/addPerson', new PersonModel(this.personName)).subscribe((r) => {
+            console.log(JSON.stringify(r, null, 4));
+        });
+    }
 }
