@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files (x86)\nodejs\node.exe C:\Users\kapellusch\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js start:Server
+  C:\Program Files (x86)\nodejs\node.exe C:\Users\kapellusch\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js start:devServer
 
 PATH: 
   C:\Python27\;C:\Python27\Scripts;C:\Program Files\Docker\Docker\Resources\bin;C:\Python36\Scripts\;C:\Python36\;C:\ProgramData\Anaconda3;C:\ProgramData\Anaconda3\Library\mingw-w64\bin;C:\ProgramData\Anaconda3\Library\usr\bin;C:\ProgramData\Anaconda3\Library\bin;C:\ProgramData\Anaconda3\Scripts;C:\ProgramData\Oracle\Java\javapath;C:\Python27\;C:\Program Files\apache-ant-1.9.7\bin;C:\Program Files (x86)\Java\jdk1.8.0_102\bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\CustomCommands\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\IDE\PrivateAssemblies\;C:\Program Files (x86)\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;c:\Program Files (x86)\Microsoft SQL Server\90\Tools\binn\;C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\Microsoft Team Foundation Server 2015 Power Tools\;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files (x86)\dotnet\;C:\Users\kapellusch\AppData\Roaming\npm;C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\MSBuild\15.0\Bin\Roslyn;C:\WINDOWS\system32;C:\Program Files\dotnet\;C:\Program Files\LLVM\bin;C:\PostgreSQL\pg96\bin;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Git\cmd;C:\Program Files (x86)\nodejs\;C:\Users\kapellusch\AppData\Roaming\npm\node_modules\chromedriver\lib\chromedriver\chromedriver.exe;C:\Users\kapellusch\AppData\Roaming\npm\node_modules\chromedriver\lib\chromedriver\;C:\Program Files (x86)\PuTTY\;C:\Program Files\Microsoft VS Code\bin;C:\Program Files (x86)\Skype\Phone\;C:\Users\kapellusch\.dnx\runtimes\dnx-clr-win-x86.1.0.0-rc1-update2\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Users\kapellusch\.dnx\bin;C:\Users\kapellusch\AppData\Local\Microsoft\WindowsApps;C:\Program Files\apache-ant;C:\Windows\System32\;C:\Program Files\MongoDB\Server\3.6\bin;C:\Users\kapellusch\AppData\Local\.meteor;C:\Program Files\Docker Toolbox
@@ -26,12 +26,12 @@ npm manifest:
       "build:client": "ng build --prod --aot --build-optimizer -e=prod --output-hashing=false",
       "build:server": "tsc -p ./tsconfig.server.json",
       "buildScripts": "node ./build-scripts/main.build.js",
-      "build:all": "yarn build:client && yarn build:server",
+      "build:all": "yarn build:client && yarn build:server && yarn buildScripts",
       "start:devClient": "ng serve --hmr -e=hmr --proxy-config proxy.config.json",
       "start:devServer": "tsc-watch -p ./tsconfig.server.json --onSuccess \"yarn start:server \"",
       "start:devAll": "concurrently --kill-others \" yarn start:devServer \" \" yarn start:devClient \" ",
-      "start:server": "node --inspect ./compiled-server/main.server.js",
-      "start:prod": "yarn build:all && yarn buildScripts && yarn start:server"
+      "start:server": "node --inspect ./compiled-server/server/main.server.js",
+      "start:prod": "yarn build:all && yarn start:server"
     },
     "private": true,
     "dependencies": {
@@ -54,6 +54,7 @@ npm manifest:
       "@nguniversal/module-map-ngfactory-loader": "^5.0.0-beta.6",
       "compression": "^1.7.2",
       "core-js": "^2.5.3",
+      "cors": "^2.8.4",
       "express": "^4.16.2",
       "font-awesome": "^4.7.0",
       "fs": "^0.0.1-security",
@@ -61,6 +62,7 @@ npm manifest:
       "mongoose": "^5.0.9",
       "ng2-charts": "^1.6.0",
       "reflect-metadata": "^0.1.12",
+      "rx-node": "^1.0.2",
       "rxjs": "^5.5.6",
       "ws": "^5.0.0",
       "zone.js": "^0.8.20"
@@ -72,12 +74,16 @@ npm manifest:
       "@angular/compiler-cli": "^5.2.8",
       "@angular/language-service": "^5.2.8",
       "@angularclass/hmr": "^2.1.3",
+      "@types/body-parser": "^1.16.8",
       "@types/compression": "^0.0.35",
+      "@types/cors": "^2.8.3",
       "@types/express": "^4.11.1",
       "@types/jasmine": "~2.8.6",
       "@types/jasminewd2": "~2.0.3",
       "@types/mongoose": "^5.0.7",
       "@types/node": "^9.4.7",
+      "@types/ws": "^4.0.1",
+      "body-parser": "^1.18.2",
       "codelyzer": "^4.2.1",
       "concurrently": "^3.5.1",
       "forever": "^0.15.3",
@@ -92,7 +98,7 @@ npm manifest:
       "karma-jasmine-html-reporter": "^0.2.2",
       "protractor": "~5.3.0",
       "ts-node": "^5.0.1",
-      "tsc-watch": "^1.0.16",
+      "tsc-watch": "^1.0.17",
       "tslint": "~5.9.1",
       "typescript": "~2.7.2"
     }
@@ -345,7 +351,7 @@ Lockfile:
     dependencies:
       typescript "~2.6.2"
   
-  "@types/body-parser@*":
+  "@types/body-parser@*", "@types/body-parser@^1.16.8":
     version "1.16.8"
     resolved "https://registry.yarnpkg.com/@types/body-parser/-/body-parser-1.16.8.tgz#687ec34140624a3bec2b1a8ea9268478ae8f3be3"
     dependencies:
@@ -361,6 +367,12 @@ Lockfile:
   "@types/compression@^0.0.35":
     version "0.0.35"
     resolved "https://registry.yarnpkg.com/@types/compression/-/compression-0.0.35.tgz#7673a9c4b075e5194ada8c5938291015652a21e1"
+    dependencies:
+      "@types/express" "*"
+  
+  "@types/cors@^2.8.3":
+    version "2.8.3"
+    resolved "https://registry.yarnpkg.com/@types/cors/-/cors-2.8.3.tgz#eaf6e476da0d36bee6b061a24d57e343ddce86d6"
     dependencies:
       "@types/express" "*"
   
@@ -435,6 +447,13 @@ Lockfile:
     dependencies:
       "@types/express-serve-static-core" "*"
       "@types/mime" "*"
+  
+  "@types/ws@^4.0.1":
+    version "4.0.1"
+    resolved "https://registry.yarnpkg.com/@types/ws/-/ws-4.0.1.tgz#3309d4d02a1ea9cf617d638b9239a2e1e28ef21e"
+    dependencies:
+      "@types/events" "*"
+      "@types/node" "*"
   
   JSONStream@^1.0.3:
     version "1.3.2"
@@ -1011,7 +1030,7 @@ Lockfile:
     version "4.11.8"
     resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.8.tgz#2cde09eb5ee341f484746bb0309b3253b1b1442f"
   
-  body-parser@1.18.2, body-parser@^1.16.1:
+  body-parser@1.18.2, body-parser@^1.16.1, body-parser@^1.18.2:
     version "1.18.2"
     resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.18.2.tgz#87678a19d84b47d859b83199bd59bce222b10454"
     dependencies:
@@ -1890,6 +1909,13 @@ Lockfile:
   core-util-is@1.0.2, core-util-is@~1.0.0:
     version "1.0.2"
     resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
+  
+  cors@^2.8.4:
+    version "2.8.4"
+    resolved "https://registry.yarnpkg.com/cors/-/cors-2.8.4.tgz#2bd381f2eb201020105cd50ea59da63090694686"
+    dependencies:
+      object-assign "^4"
+      vary "^1"
   
   cosmiconfig@^2.1.0, cosmiconfig@^2.1.1:
     version "2.2.2"
@@ -5293,7 +5319,7 @@ Lockfile:
     version "3.0.0"
     resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-3.0.0.tgz#9bedd5ca0897949bca47e7ff408062d549f587f2"
   
-  object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
+  object-assign@^4, object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
     version "4.1.1"
     resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
   
@@ -6658,6 +6684,16 @@ Lockfile:
     dependencies:
       aproba "^1.1.1"
   
+  rx-node@^1.0.2:
+    version "1.0.2"
+    resolved "https://registry.yarnpkg.com/rx-node/-/rx-node-1.0.2.tgz#151240725a79e857360ab06cc626799965e094de"
+    dependencies:
+      rx "*"
+  
+  rx@*:
+    version "4.1.0"
+    resolved "https://registry.yarnpkg.com/rx/-/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
+  
   rx@2.3.24:
     version "2.3.24"
     resolved "https://registry.yarnpkg.com/rx/-/rx-2.3.24.tgz#14f950a4217d7e35daa71bbcbe58eff68ea4b2b7"
@@ -7637,9 +7673,9 @@ Lockfile:
       source-map-support "^0.5.3"
       yn "^2.0.0"
   
-  tsc-watch@^1.0.16:
-    version "1.0.16"
-    resolved "https://registry.yarnpkg.com/tsc-watch/-/tsc-watch-1.0.16.tgz#543b736921b52be69831885f8f5e25aa21308cb7"
+  tsc-watch@^1.0.17:
+    version "1.0.17"
+    resolved "https://registry.yarnpkg.com/tsc-watch/-/tsc-watch-1.0.17.tgz#c33e564aba93617823b17996f2dd999cefb7a0b9"
     dependencies:
       chalk "^2.3.0"
       cross-spawn "^5.1.0"
@@ -7955,7 +7991,7 @@ Lockfile:
       spdx-correct "^3.0.0"
       spdx-expression-parse "^3.0.0"
   
-  vary@~1.1.2:
+  vary@^1, vary@~1.1.2:
     version "1.1.2"
     resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   
@@ -8388,14 +8424,16 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.8.20.tgz#a218c48db09464b19ff6fc8f0d4bb5b1046e185d"
 
 Trace: 
-  Error: Command "start:Server" not found. Did you mean "start:server"?
-      at new MessageError (C:\Users\kapellusch\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:186:110)
-      at C:\Users\kapellusch\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:86874:17
-      at Generator.next (<anonymous>)
-      at step (C:\Users\kapellusch\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:98:30)
-      at C:\Users\kapellusch\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:116:14
-      at new Promise (<anonymous>)
-      at new F (C:\Users\kapellusch\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:23457:28)
-      at C:\Users\kapellusch\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:95:12
-      at runCommand (C:\Users\kapellusch\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:86879:22)
-      at Object.<anonymous> (C:\Users\kapellusch\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:86979:14)
+  Error: Command failed.
+  Exit code: 3221225786
+  Command: C:\WINDOWS\system32\cmd.exe
+  Arguments: /d /s /c tsc-watch -p ./tsconfig.server.json --onSuccess "yarn start:server "
+  Directory: C:\Users\kapellusch\Documents\GitHub\BattleBorn18\web
+  Output:
+  
+      at ProcessTermError.MessageError (C:\Users\kapellusch\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:186:110)
+      at new ProcessTermError (C:\Users\kapellusch\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:226:113)
+      at ChildProcess.<anonymous> (C:\Users\kapellusch\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:30822:17)
+      at ChildProcess.emit (events.js:159:13)
+      at maybeClose (internal/child_process.js:943:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:220:5)

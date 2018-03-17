@@ -1,7 +1,7 @@
 import {Observable} from "rxjs/Observable";
 import {DataSource} from "@angular/cdk/table";
 import {MatSort, MatPaginator} from "@angular/material";
-import {UserData} from "../../models/userdata.model";
+import {IUserData} from "../../models/userdata.model";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {Injectable} from "@angular/core";
 
@@ -32,9 +32,9 @@ const NAMES = [
 export class ExampleDatabase
 {
     /** Stream that emits whenever the data has been modified. */
-    public dataChange = new BehaviorSubject < UserData[] > ([]);
+    public dataChange = new BehaviorSubject < IUserData[] > ([]);
 
-    public get data() : UserData[]
+    public get data() : IUserData[]
     {
         return this.dataChange.value;
     }
@@ -106,7 +106,7 @@ export class ExampleDataSource extends DataSource < any > {
         super();
     }
 
-    private get SortedData() : UserData[]
+    private get SortedData() : IUserData[]
     {
         const data = this
             ._exampleDatabase
@@ -150,7 +150,7 @@ export class ExampleDataSource extends DataSource < any > {
     }
 
     /** Connect function called by the table to retrieve one stream containing the data to render. */
-    public connect() : Observable < UserData[] > {
+    public connect() : Observable < IUserData[] > {
         const displayDataChanges = [this._exampleDatabase.dataChange, this._paginator.page, this._sort.sortChange, this._filterChange];
 
         return Observable
@@ -161,7 +161,7 @@ export class ExampleDataSource extends DataSource < any > {
                 const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
                 return data
                     .splice(startIndex, this._paginator.pageSize)
-                    .filter((item : UserData) => {
+                    .filter((item : IUserData) => {
                         const searchStr = (item.name + item.position + item.score).toLowerCase();
                         return searchStr.indexOf(this.filter.toLowerCase()) != -1;
                     });

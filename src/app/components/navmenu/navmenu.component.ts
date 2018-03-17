@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class NavMenuComponent
 {
-    private _navLinks: NavLink[] = [
+    private _navLinks: INavLink[] = [
         {
             AnchorClasses: ["toolBarLinkText"],
             Link: "/home",
@@ -51,14 +51,14 @@ export class NavMenuComponent
         });
     }
 
-    public get NavLinks(): NavLink[]
+    public get NavLinks(): INavLink[]
     {
         return this._navLinks;
     }
 }
 
 
-interface NavLink
+interface INavLink
 {
     AnchorClasses: string[];
     Link: string;

@@ -2,7 +2,7 @@ import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
 import {ExampleDataSource, ExampleDatabase} from '../../services/databases/example.database.service';
 import {MatDialog, MatSnackBar, MatSort, MatPaginator} from '@angular/material';
 import {Observable} from 'rxjs/Observable';
-import {UserData} from '../../models/userdata.model';
+import {IUserData} from '../../models/userdata.model';
 
 @Component({selector: 'data-table', templateUrl: './data-table.component.html', styleUrls: ['./data-table.component.css']})
 export class DataTableComponent implements OnInit {
@@ -43,7 +43,7 @@ export class DataTableComponent implements OnInit {
                     : 0];
         return scoreColor;
     }
-    public rowClickedHandler(x : UserData) : void
+    public rowClickedHandler(x : IUserData) : void
     {}
 
     public buildValue(row : any, item : any) {

@@ -1,4 +1,4 @@
-export interface UserData
+export interface IUserData
 {
   position: number;
   name: string;
