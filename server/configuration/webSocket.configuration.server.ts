@@ -3,7 +3,7 @@ import * as http from 'http';
 import * as WebSocket from 'ws';
 import { Server } from "http";
 
-export function InitializeSocketServer(server: Server) {
+export function configureSocketServer(server: Server) {
 
     const socketServer = new WebSocket.Server({ server });
 
@@ -17,6 +17,7 @@ export function InitializeSocketServer(server: Server) {
         });
 
     });
+    
     socketServer.on("error", () => console.log("connection error oh well"));
     return socketServer;
 }

@@ -6,5 +6,5 @@ export interface IPersonModel {
 }
 
 export class PersonModel implements IPersonModel {
-	constructor(public name: string, public job: JobModel = new JobModel("Unemployed", 0)) {}
+	constructor(public name: string, public job: JobModel = null) {}
 }

@@ -19,6 +19,7 @@ import { test } from '../../decorators/test.decorator';
 import { guid } from '../../utils/guid';
 import { PersonModel } from '../../../../common/models/person.model';
 import { createWorker } from '../../utils/createWorker';
+import { JobModel } from '../../../../common/models/job.model';
 
 interface IAppState {
     count: number;
@@ -40,6 +41,11 @@ export class HomeComponent {
         this.count$ = store.select((a) => a.count);
     }
 
+    getCached() {
+        this.http.get("/api/test").subscribe(res => {
+            alert(JSON.stringify(res, null, 4));
+        })
+    }
     increment() {
         this.store.dispatch({ type: INCREMENT });
     }
@@ -84,16 +90,24 @@ export class HomeComponent {
     async sendMessage() {
         (await this.getWebSocket()).send("hey");
     }
-	
-	testWorker() {
-		let code = () => "wowie!";
-		let worker = createWorker(code.toString());
-		worker.postMessage("test");
-		worker.onmessage = (m) => console.log(m.data)
-	}
+
+    testWorker() {
+        let code = () => "wowie!";
+        let worker = createWorker(code.toString());
+        worker.postMessage("test");
+        worker.onmessage = (m) => console.log(m.data)
+    }
     makePerson() {
-        this.http.post('/api/addPerson', new PersonModel(this.personName)).subscribe((r) => {
-            console.log(JSON.stringify(r, null, 4));
-        });
+        let responseCount = 0;
+        let goal = 10;
+        let start = new Date();
+        for (let i = 0; i < goal; i++) {
+            let person = new PersonModel(this.personName + i);
+            person.job = new JobModel("Engineer " + i, 105_000);
+            this.http.post('/api/addPerson', person).subscribe((r) => {
+                if (++responseCount == goal) alert(`we did it! ${(<any>new Date() - <any>start) / 1000}`);
+                console.log(JSON.stringify(r, null, 4));
+            });
+        }
     }
 }
