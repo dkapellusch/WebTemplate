@@ -20,6 +20,7 @@ import { guid } from '@common/utils/guid';
 import { PersonModel } from '../../../../common/models/person.model';
 import { createWorker } from '../../utils/createWorker';
 import { JobModel } from '../../../../common/models/job.model';
+import { UserModel } from '@common/models/user.model';
 
 interface IAppState {
     count: number;
@@ -47,6 +48,7 @@ export class HomeComponent {
         })
     }
     increment() {
+        let a = new UserModel("123","asdasd");
         this.store.dispatch({ type: INCREMENT });
     }
 
