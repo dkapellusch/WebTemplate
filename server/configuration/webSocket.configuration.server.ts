@@ -5,7 +5,7 @@ import { Server } from "http";
 
 export function configureSocketServer(server: Server) {
 
-    const socketServer = new WebSocket.Server({ server });
+    const socketServer = new WebSocket.Server({ server: server, path:"/ws" });
 
     socketServer.on('connection', (socket: WebSocket) => {
 

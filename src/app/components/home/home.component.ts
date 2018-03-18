@@ -58,25 +58,13 @@ export class HomeComponent {
         this.store.dispatch({ type: RESET });
     }
 
-    connect() {
-        return new Promise(function(resolve, reject) {
-            var server = new WebSocket('ws://mysite:1234');
-            server.onopen = function() {
-                resolve(server);
-            };
-            server.onerror = function(err) {
-                reject(err);
-            };
-
-        });
-    }
-
+   
     getWebSocket(): Promise < WebSocket > {
         return new Promise((res, rej) => {
             if (this._socket !== undefined && this._socket !== null && this._socket.OPEN) {
                 res(this._socket);
             }
-            this._socket = new WebSocket("ws://localhost:4200/api");
+            this._socket = new WebSocket("ws://" + location.host + "/ws");
             this._socket.onmessage = (m) => {
                 alert("Wow I got " + JSON.stringify(m.data));
             }
