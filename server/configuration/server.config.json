@@ -1,5 +1,5 @@
 {
     "ConnectionStrings":{
-        "Local":"mongodb://admin:sa123@localhost:27017/webTest"
+        "Local":"mongodb://admin:sa123@ec2-54-158-139-16.compute-1.amazonaws.com:27017/webTest?authSource=admin"
     }
 }
