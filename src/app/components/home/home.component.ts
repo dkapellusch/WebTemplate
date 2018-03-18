@@ -16,7 +16,7 @@ import { HttpClient } from '@angular/common/http';
 import { INCREMENT, DECREMENT, RESET } from '../../reducers/counter.reducer';
 import { Store } from '@ngrx/store';
 import { test } from '../../decorators/test.decorator';
-import { guid } from '../../utils/guid';
+import { guid } from '@common/utils/guid';
 import { PersonModel } from '../../../../common/models/person.model';
 import { createWorker } from '../../utils/createWorker';
 import { JobModel } from '../../../../common/models/job.model';
@@ -80,9 +80,10 @@ export class HomeComponent {
     }
 
     testWorker() {
+		alert(guid().toString())
         let code = () => "wowie!";
         let worker = createWorker(code.toString());
-        worker.postMessage("test");
+        worker.postMessage(guid().toString());
         worker.onmessage = (m) => console.log(m.data)
     }
     makePerson() {
