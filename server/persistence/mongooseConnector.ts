@@ -5,7 +5,7 @@ export class MongooseConnector {
     private _connected = false;
 
     constructor(private connectionString: string) {
-        (mongoose.Promise as any) = global.Promise;
+        (<any>mongoose).Promise  = global.Promise;
     }
 
     public async Connect(): Promise < any > {

@@ -1,10 +1,10 @@
 import { Schema, model, Model, Document } from 'mongoose';
 import {  IPersonModel } from '../../../common/models/person.model';
-import { Job } from './job.model';
+import { IJob } from './job.model';
 const CollectionName = 'Persons';
 
-export interface Person extends IPersonModel, Document {
-	job: Job
+export interface IPerson extends IPersonModel, Document {
+	job: IJob
 }
 
 const PersonSchema = new Schema({
@@ -12,4 +12,4 @@ const PersonSchema = new Schema({
 	job: { type: Schema.Types.ObjectId, ref: 'Jobs', foreignField: "title" }
 });
 
-export const Person: Model<Person> = model(CollectionName, PersonSchema);
+export const Person: Model<IPerson> = model<IPerson>(CollectionName, PersonSchema);
