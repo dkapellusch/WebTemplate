@@ -1,19 +1,15 @@
-<h1 style="text-align:center; margin:auto;">
-  Team IntelliMine
-
-</h1>
 <br>
 <mat-form-field class="example-full-width">
 <input matInput placeholder="Person Name" [(ngModel)]="personName">
 </mat-form-field>
 <button mat-button (click)="makePerson()" color="primary" > Make Person</button>
-<img style= "margin:auto; display:block; "src="https://mining.komatsu/images/default-source/product-images/surface/electric-rope-shovels/gpl5839.jpg?sfvrsn=54"/>
-
+<br>
 <button mat-button (click)="sendMessage()" color="primary" > Send Message</button>
 <button mat-button  color="primary" (click)="getCached()">Get From Cache</button>
 <button mat-button (click)="testWorker()" color="primary" > Test Worker</button>
-<button mat-button  color="primary" (click)="decrement()">Decrement</button>
+<br>
 <button  mat-button  color="primary" (click)="increment()">Increment</button>
+<button mat-button  color="primary" (click)="decrement()">Decrement</button>
 <button mat-button  color="primary" (click)="reset()">Reset Counter</button>
 <hr/>
 <div>Current Count: {{ count$ | async }}</div>
