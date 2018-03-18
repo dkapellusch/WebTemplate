@@ -1,7 +1,7 @@
-import {PersonModel} from "../../common/models/person.model";
-import {Person} from "../persistence/models/person.model";
-import {Job} from "../persistence/models/job.model";
-import {JobModel} from "../../common/models/job.model";
+import {PersonModel} from "../../../common/models/person.model";
+import {Person} from "../../persistence/models/person.model";
+import {Job} from "../../persistence/models/job.model";
+import {JobModel} from "../../../common/models/job.model";
 import {Express} from "express-serve-static-core";
 
 export function configureApiRoutes(app : Express) : void {

@@ -1,12 +1,12 @@
 import {Express} from "express-serve-static-core";
 import * as bodyParser from "body-parser";
 import * as cors from "cors";
-import { configureApiRoutes } from "./api.configuration.server";
-import {configureStaticRoutes } from "./static.configuration.server";
+import { configureApiRoutes } from "./http/api.configuration.server";
+import {configureStaticRoutes } from "./http/static.configuration.server";
 import { configureSocketServer } from "./webSocket.configuration.server";
 import {Server as WebSocketServer} from "ws";
 import {Server as HttpServer} from "http";
-import { configureHttpServer } from "./http.configuration.server";
+import { configureHttpServer } from "./http/http.configuration.server";
 
 export class ServerInstances {
     static SOCKET_SERVER: WebSocketServer = null;
