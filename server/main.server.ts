@@ -5,6 +5,9 @@ import * as http from "http";
 import {readFileSync} from "fs";
 import {MongooseConnector} from "./persistence/mongooseConnector";
 import {configureServer, ServerInstances} from "./configuration/main.configuration.server";
+import {User} from "./persistence/models/user.model";
+import {UserModel} from "@common/models/user.model";
+import {Role} from "@common/enums/role.enum";
 
 const PORT = process.env.PORT || 8080;
 const APP = express();
@@ -19,8 +22,6 @@ const CONNECTION_STRING = JSON
 const DB_CONNECTOR = new MongooseConnector(CONNECTION_STRING);
 DB_CONNECTOR.Connect();
 
-configureServer(APP)
-
-ServerInstances.HTTP_SERVER.listen(PORT, () => {
-    console.log(`Node server listening on http://localhost:${PORT}`);
-});
+let user = new User(new UserModel("dkapellusch", "1234qwer", role : Role.Admin));
+// configureServer(APP) ServerInstances.HTTP_SERVER.listen(PORT, () => {
+// console.log(`Node server listening on http://localhost:${PORT}`); });

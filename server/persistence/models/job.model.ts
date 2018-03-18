@@ -1,12 +1,12 @@
 import { Schema, model, Model, Document } from "mongoose";
-import { IJobModel } from "../../../common/models/job.model";
-import {IPerson} from './person.model';
+import { IJobModel } from "@common/models/job.model";
+import { IPersonModel } from "@common/models/person.model";
 
 const CollectionName = "Jobs";
 
 
-export interface IJob extends IJobModel, Document {
-    professionals: IPerson[]
+interface IJob extends IJobModel, Document {
+    professionals: IPersonModel[]
  }
 
 const JobSchema = new Schema({
