@@ -20,13 +20,5 @@
       "es2017",
       "dom"
     ]
-  },
-  "exclude": [
-    "./server",
-    "./node_modules"
-  ],
-  "include": [
-    "./src",
-    "./common"
-  ]
+  }
 }

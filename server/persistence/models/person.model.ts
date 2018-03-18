@@ -1,5 +1,5 @@
 import { Schema, model, Model, Document } from 'mongoose';
-import {  IPersonModel } from '../../../common/models/person.model';
+import {  IPersonModel } from '@common/models/person.model';
 import { IJob } from './job.model';
 const CollectionName = 'Persons';
 

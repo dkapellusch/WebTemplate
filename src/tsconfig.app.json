@@ -10,7 +10,13 @@
     "types": []
   },
   "exclude": [
+    "../server",
+    "../node_modules",
     "test.ts",
     "**/*.spec.ts"
+  ],
+  "include": [
+    "../src",
+    "../common"
   ]
 }
