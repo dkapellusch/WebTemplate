@@ -18,7 +18,7 @@
     <mat-form-field style="display:table; margin: auto;  width:20vw;">
         <mat-select placeholder="Role">
             <mat-option name="role" *ngFor="let role of roleOptions; let i=index;" value="role"  >
-                {{ role }}
+                {{roles[role]}}
             </mat-option>
         </mat-select>
     </mat-form-field>

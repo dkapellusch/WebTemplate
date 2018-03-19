@@ -1,23 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { UserModel } from '@common/models/user.model';
-import { Role } from '@common/enums/role.enum';
-
-@Component({
-  selector: 'app-auth-page',
-  templateUrl: './auth-page.component.html',
-  styleUrls: ['./auth-page.component.css']
-})
+import {Component, OnInit} from '@angular/core';
+import {UserModel} from '@common/models/user.model';
+import {Role} from '@common/enums/role.enum';
+import "@common/extensions/all.extension";
+@Component({selector: 'app-auth-page', templateUrl: './auth-page.component.html', styleUrls: ['./auth-page.component.css']})
 export class AuthPageComponent implements OnInit {
-  
-  user = new UserModel("","");
-  roleOptions = Object.keys(Role).slice(4);
 
-  constructor() { }
+  user = new UserModel("", "");
+  roles = Role;
+  roleOptions = [0, 1, 2, 3]
 
-  ngOnInit() {
-  }
-  submit(event:Event) {
-      console.log(Object.keys(Role));
-      event.preventDefault();
+  constructor() {}
+
+  ngOnInit() {}
+  submit(event : Event) {
+    event.preventDefault();
   }
 }
