@@ -1,9 +1,26 @@
-<form style="margin-top: 5%;">
-    <mat-form-field  floatPlaceholder="center" style="display:table; margin: auto; width:20vw; margin-bottom:5vh;">
-        <input style="text-align: center;" matInput placeholder="User Name" value="">
+<form style="margin-top: 5%;" #userForm="ngForm">
+    <mat-form-field floatPlaceholder="center" style="
+                        display:table; 
+                        margin: auto; 
+                        width:20vw; 
+                        margin-bottom:1vh;">
+
+        <input style="text-align: center;" matInput name="userName" placeholder="User Name" [(ngModel)]="user.userName">
+
+    </mat-form-field>
+    <mat-form-field style="display:table; margin: auto;  width:20vw; margin-bottom:1vh;">
+
+        <mat-placeholder> Password </mat-placeholder>
+
+        <input style="text-align: center;" matInput name="password" [(ngModel)]="user.password">
+
     </mat-form-field>
     <mat-form-field style="display:table; margin: auto;  width:20vw;">
-        <mat-placeholder> Password </mat-placeholder>
-        <input style="text-align: center;" matInput value="">
+        <mat-select placeholder="Role">
+            <mat-option name="role" *ngFor="let role of roleOptions; let i=index;" value="role"  >
+                {{ role }}
+            </mat-option>
+        </mat-select>
     </mat-form-field>
+    <button style="display:table; margin:auto;" mat-button color="dark" (click)="submit($event)">Submit</button>
 </form>
