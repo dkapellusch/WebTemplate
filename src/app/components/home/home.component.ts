@@ -93,7 +93,7 @@ export class HomeComponent {
         let start = new Date();
         for (let i = 0; i < goal; i++) {
             let person = new PersonModel(this.personName + i);
-            person.job = new JobModel("Engineer " + i, 105 _000);
+            person.job = new JobModel("Engineer " + i, 105_000);
             this.http.post('/api/addPerson', person).subscribe((r) => {
                 if (++responseCount == goal) alert(`we did it! ${(<any>new Date() - <any>start) / 1000}`);
                 console.log(JSON.stringify(r, null, 4));

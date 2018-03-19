@@ -29,8 +29,15 @@ export class NavMenuComponent
             AnchorClasses: ["toolBarLinkText"],
             Link: "/dashboard",
             Icon: "assignment",
-            ItemClasses: ["toolbarItem"],
+            ItemClasses: ["toolbarItem", "fill-remaining-space"],
             LinkText: "Dashboard"
+        },
+        {
+            AnchorClasses: ["toolBarLinkText"],
+            Link: "/login",
+            Icon: "account_circle",
+            ItemClasses: ["toolbarItem", "block"],
+            LinkText: "Login"
         }
     ];
 

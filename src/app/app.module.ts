@@ -30,7 +30,8 @@ import { AuthPageComponent } from './components/auth-page/auth-page.component';
     AppComponent, HomeComponent, 
     DataTableComponent, NavMenuComponent, 
     LineChartComponent, DonutChartComponent, 
-    DashboardComponent, OperatorChartComponent, AuthPageComponent
+    DashboardComponent, OperatorChartComponent,
+     AuthPageComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +62,9 @@ import { AuthPageComponent } from './components/auth-page/auth-page.component';
       }, {
         path: "dashboard",
         component: DashboardComponent
+      }, {
+        path: "login",
+        component: AuthPageComponent
       }, {
         path: "**",
         redirectTo: "home"

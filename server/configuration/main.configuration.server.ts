@@ -11,11 +11,14 @@ import { Server as HttpServer } from "http";
 import { configureHttpServer } from "./http/http.configuration.server";
 import { MongooseConnector } from "../persistence/mongooseConnector";
 
+const PORT = process.env.PORT || 8080;
+
 export class ServerInstances {
     static SOCKET_SERVER: WebSocketServer = null;
     static HTTP_SERVER: HttpServer = null;
     static CONFIGURATION: any = null;
     static MONGO_CONNECTION: MongooseConnector = null;
+    static EXPRESS_APP: Express = null;
 }
 
 function configureExpressPlugins(app: Express): void {
@@ -40,11 +43,12 @@ function initializeDatabaseConnection(connectionString: string = ServerInstances
     ServerInstances.MONGO_CONNECTION.Connect();
 }
 
-export function configureServer(app: Express): void {
+export function configureServer(): void {
+    ServerInstances.EXPRESS_APP = express();
     readConfiguration();
     initializeDatabaseConnection();
-    configureExpressPlugins(app);
-    initializeServerInstances(app);
-    configureApiRoutes(app);
-    configureStaticRoutes(app);
+    configureExpressPlugins(ServerInstances.EXPRESS_APP);
+    initializeServerInstances(ServerInstances.EXPRESS_APP);
+    configureApiRoutes(ServerInstances.EXPRESS_APP);
+    configureStaticRoutes(ServerInstances.EXPRESS_APP);
 }
