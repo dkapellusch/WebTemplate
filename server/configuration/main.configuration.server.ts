@@ -1,25 +1,16 @@
-import { Express } from "express-serve-static-core";
 import * as bodyParser from "body-parser";
 import * as cors from "cors";
 import * as path from "path";
+import * as express from "express";
+import { Express } from "express-serve-static-core";
 import { readFileSync } from "fs";
 import { configureApiRoutes } from "./http/api.configuration.server";
 import { configureStaticRoutes } from "./http/static.configuration.server";
-import { configureSocketServer } from "./webSocket.configuration.server";
-import { Server as WebSocketServer } from "ws";
-import { Server as HttpServer } from "http";
+import { configureSocketServer } from "./webSocket/webSocket.configuration.server";
 import { configureHttpServer } from "./http/http.configuration.server";
 import { MongooseConnector } from "../persistence/mongooseConnector";
+import { ServerInstances } from "../instances.server";
 
-const PORT = process.env.PORT || 8080;
-
-export class ServerInstances {
-    static SOCKET_SERVER: WebSocketServer = null;
-    static HTTP_SERVER: HttpServer = null;
-    static CONFIGURATION: any = null;
-    static MONGO_CONNECTION: MongooseConnector = null;
-    static EXPRESS_APP: Express = null;
-}
 
 function configureExpressPlugins(app: Express): void {
     app.use(cors());
