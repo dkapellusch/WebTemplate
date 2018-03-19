@@ -23,13 +23,14 @@ import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './reducers/counter.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AlertEffect } from './effects/alert.effect';
+import { AuthPageComponent } from './components/auth-page/auth-page.component';
 
 @NgModule({
   declarations: [
     AppComponent, HomeComponent, 
     DataTableComponent, NavMenuComponent, 
     LineChartComponent, DonutChartComponent, 
-    DashboardComponent, OperatorChartComponent
+    DashboardComponent, OperatorChartComponent, AuthPageComponent
   ],
   imports: [
     BrowserModule,

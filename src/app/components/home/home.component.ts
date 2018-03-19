@@ -48,7 +48,7 @@ export class HomeComponent {
         })
     }
     increment() {
-        let a = new UserModel("123","asdasd");
+        let a = new UserModel("123", "asdasd");
         this.store.dispatch({ type: INCREMENT });
     }
 
@@ -60,7 +60,6 @@ export class HomeComponent {
         this.store.dispatch({ type: RESET });
     }
 
-   
     getWebSocket(): Promise < WebSocket > {
         return new Promise((res, rej) => {
             if (this._socket !== undefined && this._socket !== null && this._socket.OPEN) {
@@ -82,7 +81,7 @@ export class HomeComponent {
     }
 
     testWorker() {
-		alert(guid().toString())
+        alert(guid().toString())
         let code = () => "wowie!";
         let worker = createWorker(code.toString());
         worker.postMessage(guid().toString());
@@ -94,7 +93,7 @@ export class HomeComponent {
         let start = new Date();
         for (let i = 0; i < goal; i++) {
             let person = new PersonModel(this.personName + i);
-            person.job = new JobModel("Engineer " + i, 105_000);
+            person.job = new JobModel("Engineer " + i, 105 _000);
             this.http.post('/api/addPerson', person).subscribe((r) => {
                 if (++responseCount == goal) alert(`we did it! ${(<any>new Date() - <any>start) / 1000}`);
                 console.log(JSON.stringify(r, null, 4));

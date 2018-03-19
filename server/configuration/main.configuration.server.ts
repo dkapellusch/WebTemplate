@@ -10,7 +10,6 @@ import { Server as WebSocketServer } from "ws";
 import { Server as HttpServer } from "http";
 import { configureHttpServer } from "./http/http.configuration.server";
 import { MongooseConnector } from "../persistence/mongooseConnector";
-import { isNullOrUndefined } from "util";
 
 export class ServerInstances {
     static SOCKET_SERVER: WebSocketServer = null;
