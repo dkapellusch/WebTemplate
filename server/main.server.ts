@@ -5,7 +5,7 @@ import "@common/extensions/all.extension";
 import { UserModel } from "@common/models/user.model";
 
 configureServer();
-let x = new UserModel("123","asd");
+let x = new UserModel("123","as13123d");
 ServerInstances.HTTP_SERVER.listen(Constants.PORT, () => {
     console.log(`Node server listening on http://localhost:${Constants.PORT}`);
 });

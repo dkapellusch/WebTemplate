@@ -4,7 +4,7 @@ const path = require('path');
 const parser = new require('argparse').ArgumentParser({ addHelp: true });
 const os = require('os');
 
-function* removeCharacters(obj) {
+function* removeStars(obj) {
     let keys = Object.keys(obj);
     let removeStar = (s) => s.replace(/\*/, '');
     for (const key of keys) {
@@ -39,7 +39,7 @@ function transform(rPath, tsPath) {
     let tsConfig = JSON.parse(fs.readFileSync(fullConfigPath).toString());
 
     let paths = tsConfig.compilerOptions.paths;
-    let cleanedPaths = Array.from(removeCharacters(paths)).map((o) => [Object.keys(o)[0], o[Object.keys(o)[0]]]);
+    let cleanedPaths = Array.from(removeStars(paths)).map((o) => [Object.keys(o)[0], o[Object.keys(o)[0]]]);
 
     glob('**/*.js', { cwd: rootPath }, (er, files) => {
         let containsPath = new RegExp(cleanedPaths.map(c => c[0]).join("|")).compile();
@@ -67,11 +67,12 @@ function transform(rPath, tsPath) {
                         anyChanged = true;
                     }
                 }
+
                 outLines.push(lineToWrite);
             }
-
+ 
             if (anyChanged === true) {
-                fs.writeFileSync(path.resolve('./compiled-server/', file), outLines.join('\n'));
+                fs.writeFileSync(path.resolve(rootPath, file), outLines.join('\n'));
             }
         }
     });

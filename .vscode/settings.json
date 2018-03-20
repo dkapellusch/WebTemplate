@@ -1,7 +1,13 @@
 {
     "typescript.tsdk": "/node_modules/typescript/lib",
     "files.exclude": {
-        "node_modules":true,
-        "compiled-server":false
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "compiled-server/":true,
+        "node_modules/":true,
+        "e2e/": true
     }
 }
