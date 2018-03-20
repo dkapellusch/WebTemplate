@@ -7,12 +7,14 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "scriptRun":"yarn buildScripts && node --inspect ./compiled-server/server/main.server.js",
     "build:client": "ng build --prod --aot --build-optimizer -e=prod --output-hashing=false",
     "build:server": "tsc -p ./tsconfig.server.json",
     "buildScripts": "node ./build-scripts/main.build.js",
     "build:all": "yarn build:client && yarn build:server && yarn buildScripts",
     "start:devClient": "ng serve --hmr -e=hmr --proxy-config proxy.config.json",
-    "start:devServer": "tsc-watch -p ./tsconfig.server.json --onSuccess \"yarn buildScripts && node --inspect ./compiled-server/server/main.server.js\"",
+
+    "start:devServer": "tsc-watch -p ./tsconfig.server.json --onSuccess \" yarn scriptRun \"",
     "start:devAll": "concurrently --kill-others \" yarn start:devServer \" \" yarn start:devClient \" ",
     "start:server": "node ./compiled-server/server/main.server.js",
     "start:prod": "yarn build:all && yarn start:server"

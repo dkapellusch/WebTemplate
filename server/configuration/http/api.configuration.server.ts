@@ -3,11 +3,12 @@ import {Person} from "../../persistence/models/person.model";
 import {Job} from "../../persistence/models/job.model";
 import {JobModel} from "../../../common/models/job.model";
 import {Express} from "express-serve-static-core";
+import { UserModel } from "@common/models/user.model";
 
 export function configureApiRoutes(app : Express) : void {
 
     app.get("/api/test", async(req, res) => {
-        res.json({});
+        res.json(new UserModel("123","123"));
     });
 
     app.get("/api/test2", (req, res) => {
