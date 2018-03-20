@@ -8,7 +8,7 @@ import { configureApiRoutes } from "./http/api.configuration.server";
 import { configureStaticRoutes } from "./http/static.configuration.server";
 import { configureSocketServer } from "./webSocket/webSocket.configuration.server";
 import { configureHttpServer } from "./http/http.configuration.server";
-import { MongooseConnector } from "../persistence/mongooseConnector";
+import { MongooseConnector } from "@persistence/mongooseConnector";
 import { ServerInstances } from "../instances.server";
 
 

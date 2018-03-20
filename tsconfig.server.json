@@ -10,7 +10,8 @@
     "target": "es5",
     "baseUrl": "./",
     "paths": {
-      "@common/*":["common/*"]
+      "@common/*":["common/*"],
+      "@persistence/*":["server/persistence/*"]
     },
     "typeRoots": [
       "node_modules/@types"

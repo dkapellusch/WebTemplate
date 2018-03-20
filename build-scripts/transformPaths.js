@@ -18,7 +18,7 @@ parser.addArgument(['-r', '--root'], {
     dest: 'rootPath',
     metavar: 'rootPath',
     type: 'string',
-    help: 'Path to root of project'
+    help: 'Path to output of project'
 });
 
 parser.addArgument(['-p', '--project'], {
@@ -57,6 +57,10 @@ function transform(rPath, tsPath) {
             for (const line of currentFile.split(os.EOL)) {
                 let lineToWrite = line;
 
+                if (!containsPath.test(lineToWrite)) {
+                    continue;
+                }
+                
                 for (const cleanPath of cleanedPaths) {
 
                     if (line.includes(cleanPath[0])) {

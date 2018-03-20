@@ -3,7 +3,8 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@common/*":["common/*"]
+      "@common/*":["common/*"],
+      "@persistence/*":["server/persistence/*"]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
