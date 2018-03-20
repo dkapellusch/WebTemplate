@@ -41,13 +41,13 @@ function transform(rPath, tsPath) {
     let paths = tsConfig.compilerOptions.paths;
     let cleanedPaths = Array.from(removeCharacters(paths)).map((o) => [Object.keys(o)[0], o[Object.keys(o)[0]]]);
 
-    glob('**/*.js', { cwd: './compiled-server' }, (er, files) => {
+    glob('**/*.js', { cwd: rootPath }, (er, files) => {
         let containsPath = new RegExp(cleanedPaths.map(c => c[0]).join("|")).compile();
 
         for (const file of files) {
             let outLines = [];
             let anyChanged = false;
-            let currentFilePath = path.resolve(process.cwd(), './compiled-server', file);
+            let currentFilePath = path.resolve(process.cwd(), rootPath, file);
             let currentFile = fs.readFileSync(currentFilePath).toString();
 
             if (!containsPath.test(currentFile)) {
@@ -60,7 +60,7 @@ function transform(rPath, tsPath) {
                 for (const cleanPath of cleanedPaths) {
 
                     if (line.includes(cleanPath[0])) {
-                        let refAbsolutePath = path.resolve(process.cwd(), './compiled-server', cleanPath[1]);
+                        let refAbsolutePath = path.resolve(process.cwd(), rootPath, cleanPath[1]);
                         let rel =
                             path.relative(path.dirname(currentFilePath), refAbsolutePath).replace(/\\/g, '/') + '/';
                         lineToWrite = lineToWrite.replace(cleanPath[0], rel);
