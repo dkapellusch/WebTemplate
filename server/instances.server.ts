@@ -1,7 +1,7 @@
 import { Server as WebSocketServer } from "ws";
 import { Server as HttpServer } from "http";
 import { Express } from "express-serve-static-core";
-import { MongooseConnector } from "./persistence/mongooseConnector";
+import { MongooseConnector } from "@persistence/mongooseConnector";
 
 export class ServerInstances {
     static SOCKET_SERVER: WebSocketServer = null;
