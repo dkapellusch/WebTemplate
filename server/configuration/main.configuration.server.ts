@@ -24,12 +24,12 @@ function initializeServerInstances(app: Express): void {
 
 }
 
-function readConfiguration() {
+function readConfiguration(): void {
     const CONFIG_PATH = path.resolve(process.cwd(), "./server/configuration/server.config.json");
     ServerInstances.CONFIGURATION = JSON.parse(readFileSync(CONFIG_PATH).toString());
 }
 
-function initializeDatabaseConnection(connectionString: string = ServerInstances.CONFIGURATION.ConnectionStrings.Local) {
+function initializeDatabaseConnection(connectionString: string = ServerInstances.CONFIGURATION.ConnectionStrings.Local): void {
     ServerInstances.MONGO_CONNECTION = new MongooseConnector(connectionString);
     ServerInstances.MONGO_CONNECTION.Connect();
 }
