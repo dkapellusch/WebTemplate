@@ -11,7 +11,9 @@
     "baseUrl": "./",
     "paths": {
       "@common/*":["common/*"],
-      "@persistence/*":["server/persistence/*"]
+      "@server/*":["server/*"],
+      "@persistence/*":["server/persistence/*"],
+      "@configuration/*":["server/configuration/*"]
     },
     "typeRoots": [
       "node_modules/@types"

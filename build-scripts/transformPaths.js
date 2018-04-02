@@ -67,6 +67,7 @@ function transform(rPath, tsPath) {
                         let refAbsolutePath = path.resolve(process.cwd(), rootPath, cleanPath[1]);
                         let rel =
                             path.relative(path.dirname(currentFilePath), refAbsolutePath).replace(/\\/g, '/') + '/';
+                        rel = rel.startsWith("./") ? rel : "./" + rel;
                         lineToWrite = lineToWrite.replace(cleanPath[0], rel);
                         anyChanged = true;
                     }

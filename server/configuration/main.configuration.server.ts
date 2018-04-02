@@ -3,14 +3,13 @@ import * as cors from "cors";
 import * as path from "path";
 import * as express from "express";
 import { Express } from "express-serve-static-core";
+import { MongooseConnector } from "@persistence/mongooseConnector";
+import { ServerInstances } from "../instances.server";
 import { readFileSync } from "fs";
 import { configureApiRoutes } from "./http/api.configuration.server";
 import { configureStaticRoutes } from "./http/static.configuration.server";
 import { configureSocketServer } from "./webSocket/webSocket.configuration.server";
 import { configureHttpServer } from "./http/http.configuration.server";
-import { MongooseConnector } from "@persistence/mongooseConnector";
-import { ServerInstances } from "../instances.server";
-
 
 function configureExpressPlugins(app: Express): void {
     app.use(cors());

@@ -4,6 +4,8 @@ import { Job } from "@persistence/models/job.model";
 import { JobModel } from "@common/models/job.model";
 import { UserModel } from "@common/models/user.model";
 import { Express } from "express-serve-static-core";
+import { MongooseConnector } from "@persistence/mongooseConnector";
+import { ServerInstances } from "../../instances.server";
 
 export function configureApiRoutes(app: Express): void {
 

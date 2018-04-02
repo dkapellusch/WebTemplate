@@ -7,7 +7,5 @@ export interface IJobModel {
 }
 
 export class JobModel implements IJobModel {
-    constructor(public title: string, public salary: number, public professionals: IPersonModel[] = []) {
-        
-    }
+    constructor(public title: string, public salary: number, public professionals: IPersonModel[] = []) {}
 }

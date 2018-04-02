@@ -24,6 +24,7 @@ import { counterReducer } from './reducers/counter.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AlertEffect } from './effects/alert.effect';
 import { AuthPageComponent } from './components/auth-page/auth-page.component';
+import { DataAccessService } from './services/data.access.service';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,7 @@ import { AuthPageComponent } from './components/auth-page/auth-page.component';
     ])
   ],
   providers: [
-    HttpClient, ExampleDatabase
+    HttpClient, ExampleDatabase, DataAccessService
   ],
   bootstrap: [AppComponent]
 })
