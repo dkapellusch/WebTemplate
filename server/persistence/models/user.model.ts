@@ -4,7 +4,6 @@ import { IUserModel } from "@common/models/user.model";
 
 const CollectionName = "Users";
 
-
 interface IUser extends IUserModel, Document {
 }
 

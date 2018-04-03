@@ -2,7 +2,7 @@ import { JobModel } from "./job.model";
 
 export interface IPersonModel {
     name: string;
-    job: JobModel
+    job: JobModel;
 }
 
 export class PersonModel implements IPersonModel {

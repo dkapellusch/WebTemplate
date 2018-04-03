@@ -1,3 +1,3 @@
 export class Constants {
-    static PORT: number = +process.env.PORT || 8080;
+    static PORT: number = parseInt(process.env.PORT, 10) || 8080;
 }

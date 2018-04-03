@@ -4,7 +4,6 @@ import { IPersonModel } from "@common/models/person.model";
 
 const CollectionName = "Jobs";
 
-
 interface IJob extends IJobModel, Document {
     professionals: IPersonModel[]
  }

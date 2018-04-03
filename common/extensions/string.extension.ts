@@ -4,4 +4,4 @@ interface String {
 
 String.prototype.test = function() {
     console.log("woo");
-}
+};
