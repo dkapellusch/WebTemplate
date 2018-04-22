@@ -15,9 +15,6 @@
       "@persistence/*":["server/persistence/*"],
       "@configuration/*":["server/configuration/*"]
     },
-    "typeRoots": [
-      "node_modules/@types"
-    ],
     "lib": [
       "es2017",
       "dom"
