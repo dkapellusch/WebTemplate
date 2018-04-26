@@ -10,22 +10,13 @@
     "target": "es5",
     "baseUrl": "./",
     "paths": {
-      "@common/*":["common/*"],
-      "@server/*":["server/*"],
-      "@persistence/*":["server/persistence/*"],
-      "@configuration/*":["server/configuration/*"]
+      "@common/*": ["common/*"],
+      "@server/*": ["server/*"],
+      "@persistence/*": ["server/persistence/*"],
+      "@configuration/*": ["server/configuration/*"]
     },
-    "lib": [
-      "es2017",
-      "dom"
-    ]
+    "lib": ["es2017", "dom"]
   },
-  "exclude": [
-    "./src",
-    "./node_modules"
-  ],
-  "include": [
-    "./server",
-    "./common"
-  ]
+  "exclude": ["./src", "./node_modules"],
+  "include": ["./server", "./common"]
 }

@@ -1,13 +1,17 @@
 {
-    "typescript.tsdk": "/node_modules/typescript/lib",
-    "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/CVS": true,
-        "**/.DS_Store": true,
-        "compiled-server/": true,
-        "node_modules/":false,
-        "e2e/": true
-    }
+  "typescript.tsdk": "/node_modules/typescript/lib",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "compiled-server/": true,
+    "node_modules/": true,
+    "e2e/": true
+  },
+  "codemetrics.basics.ComplexityLevelExtreme" : 35,
+  "codemetrics.basics.ComplexityLevelHigh" : 25,
+  "codemetrics.basics.ComplexityLevelNormal" : 15,
+  "codemetrics.basics.ComplexityLevelLow" : 0,
 }

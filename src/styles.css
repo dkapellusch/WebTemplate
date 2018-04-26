@@ -1,12 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 .chart {
-    display: block;
-    width: 100%;
+  display: block;
+  width: 100%;
 }
-body{
-    margin:0;
+body {
+  margin: 0;
 }
 
-mat-sidenav-content{
-    height: 100%;
+mat-sidenav-content {
+  height: 100%;
 }

@@ -4,19 +4,11 @@
     "outDir": "../out-tsc/app",
     "baseUrl": "./",
     "paths": {
-      "@common/*":["../common/*"]
+      "@common/*": ["../common/*"]
     },
     "module": "es2015",
     "types": []
   },
-  "exclude": [
-    "../server",
-    "../node_modules",
-    "test.ts",
-    "**/*.spec.ts"
-  ],
-  "include": [
-    "../src",
-    "../common"
-  ]
+  "exclude": ["../server", "../node_modules", "test.ts", "**/*.spec.ts"],
+  "include": ["../src", "../common"]
 }

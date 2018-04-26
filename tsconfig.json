@@ -3,10 +3,10 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@common/*":["common/*"],
-      "@server/*":["server/*"],
-      "@persistence/*":["server/persistence/*"],
-      "@configuration/*":["server/configuration/*"]
+      "@common/*": ["common/*"],
+      "@server/*": ["server/*"],
+      "@persistence/*": ["server/persistence/*"],
+      "@configuration/*": ["server/configuration/*"]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
@@ -16,15 +16,8 @@
     "experimentalDecorators": true,
     "alwaysStrict": true,
     "target": "es5",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2017",
-      "dom"
-    ]
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"]
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }
